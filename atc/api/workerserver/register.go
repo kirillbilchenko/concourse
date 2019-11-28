@@ -24,8 +24,10 @@ func (s *Server) RegisterWorker(w http.ResponseWriter, r *http.Request) {
 	logger := s.logger.Session("register-worker")
 	var registration atc.Worker
 
+	fmt.Println("==========================")
 	acc := accessor.GetAccessor(r)
 	if !acc.IsSystem() {
+		fmt.Println("========================== not system")
 		w.WriteHeader(http.StatusForbidden)
 		return
 	}
